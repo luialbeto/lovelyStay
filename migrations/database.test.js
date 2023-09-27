@@ -1,5 +1,5 @@
 import { describe, expect } from '@jest/globals';
-import { db } from './db.ts';
+import { db } from './create-table.ts';
 
 describe('createTable module', () => {
     const data = db();

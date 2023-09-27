@@ -1,5 +1,8 @@
-node_modules
-package-lock.json
 .env
 .eslintrc.json
-
+.idea/
+package-lock.json
+node_modules/
+*.log
+TypeScript/**/*.js
+TypeScript/**/*.map
