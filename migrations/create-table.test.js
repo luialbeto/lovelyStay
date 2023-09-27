@@ -3,5 +3,11 @@ import { createTable } from './create-table.ts';
 
 describe('createTable module', () => {
     const data = createTable();
-    expect(data).toBe(true)
-})
+    expect(data).toThrow(
+        __awaiter(this, void 0, void 0, function* () {
+        }
+        ))
+}
+)
+
+
