@@ -1,10 +1,9 @@
 import axios from 'axios';
 import readline from 'readline';
 import { createTable } from "../migrations/create-table";
-import { addUser } from "./db";
-import { displayAllUsersInDb } from "./db";
-import { displayUsersByLocation } from "./db";
-import { displayUsersByProgLang } from "./db";
+import { addUser, displayAllUsersInDb, displayUsersByLocation, displayUsersByProgLang } from "./db";
+
+const TOKEN = process.env.TOKEN;
 
 // Create readline Interface
 const RL = readline.createInterface({
@@ -36,13 +35,15 @@ async function getUserInput(question: string): Promise<string> {
 }
 
 // Fetch user data from github
-async function getUserData(userName: string, TOKEN: string) {
-
+function getUserData(userName: string, ACCESS_TOKEN: string): Promise<String> {
     // Construct the API endpoint URL
     const URL = `https://api.github.com/users/${userName}`;
 
     return axios.get(URL, {
-        headers: { Authorization: `token ${TOKEN}` },
+        headers: {
+            'User-Agent': 'request',
+            'Authorization': `token ${ACCESS_TOKEN}`,
+        }
     })
         .then(response => {
 
@@ -55,13 +56,13 @@ async function getUserData(userName: string, TOKEN: string) {
 }
 
 // Fetch programming languages from github repositories
-async function getProgLanguagesData(userName: string, TOKEN: string) {
+async function getProgLanguagesData(userName: string, ACCESS_TOKEN: string) {
 
     // Construct the API endpoint URL
     const URL = `https://api.github.com/users/${userName}/repos`;
 
     return axios.get(URL, {
-        headers: { Authorization: `token ${TOKEN}` },
+        headers: { Authorization: `token ${ACCESS_TOKEN}` },
     })
         .then(response => {
 
@@ -89,7 +90,7 @@ async function main() {
     // Create Variables
     let userInput
     let userName
-    let userData
+    let userData:any
     let languagesData
     let userLocation
     let userLanguage
@@ -99,7 +100,7 @@ async function main() {
     await createTable();
 
     // Receive github access_token from user
-    const TOKEN = await getUserInput(
+    const ACCESS_TOKEN = await getUserInput(
         "\nEnter your GitHub API Access token(e.g. '12345678'):\n"
     );
 
@@ -119,8 +120,8 @@ async function main() {
             case "1":
                 userName = await getUserInput(
                     "\nEnter name of the GitHub to add to the database:\n");
-                userData = await getUserData(userName, TOKEN)
-                languagesData = await getProgLanguagesData(userName, TOKEN)
+                userData = await getUserData(userName, ACCESS_TOKEN)
+                languagesData = await getProgLanguagesData(userName, ACCESS_TOKEN)
 
                 // Check if userData and languagesData is defined
                 if (userData && languagesData) {

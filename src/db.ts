@@ -4,7 +4,6 @@ import db from "../migrations/database";
 interface UserData {
     name: string;
     location: string;
-    languages: JSON;
 }
 
 // Create user data in db
