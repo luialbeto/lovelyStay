@@ -23,5 +23,4 @@ export async function createTable(): Promise<void> {
     } catch (error) {
         console.error("Table not ready", error);
     }
-    console.log(createTable());
 }
