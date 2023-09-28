@@ -12,6 +12,14 @@ AXIOS                 (npm install axios)
 pg-promise            (npm install pg-promise)
 ESLint                (npm init @eslint/config)
 
+==> You must enerate a *Personal Access Token* from github to apply on the script. Follow the below steps:
+
+    Go to your GitHub account settings.
+    Click on "Developer settings."
+    Click on "Personal access tokens."
+    Generate a new token with the necessary permissions (e.g., user read access).
+    Copy the generated token.
+
 ### Installing & Running
 
 Please, clone it by gitclone command line => git clone git@github.com:luialbeto/lovelyStay.git.
