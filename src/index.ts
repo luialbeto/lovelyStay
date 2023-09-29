@@ -35,7 +35,7 @@ async function getUserInput(question: string): Promise<string> {
 }
 
 // Fetch user data from github
-function getUserData(userName: string, ACCESS_TOKEN: string): Promise<String> {
+export function getUserData(userName: string, ACCESS_TOKEN: string): Promise<String> {
     // Construct the API endpoint URL
     const URL = `https://api.github.com/users/${userName}`;
 
@@ -90,7 +90,7 @@ async function main() {
     // Create Variables
     let userInput
     let userName
-    let userData:any
+    let userData: any
     let languagesData
     let userLocation
     let userLanguage

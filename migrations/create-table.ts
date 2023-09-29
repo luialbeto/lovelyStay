@@ -4,7 +4,6 @@ const db = pgp(connectionString);
 
 // Reference of repo: https://github.com/TiagoLageira/lovelystayBackEndCodingTest
 
-console.log(db);
 /*
     Creates table Users.
 */

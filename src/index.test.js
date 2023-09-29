@@ -1,84 +1,68 @@
-import { describe, expect } from '@jest/globals';
-import fetch, { enableFetchMocks } from 'jest-fetch-mock';
-import { getUserData, getProgLanguagesData } from '../src/index.ts';
+import { describe, it, expect } from '@jest/globals';
+import { getUserData, getUserInput, optionsMenu, USERINPUT } from './index.ts';
+import { addUser, displayAllUsersInDb, displayUsersByLocation, displayUsersByProgLang } from './db.ts';
 
-enableFetchMocks();
+console.log(getUserData);
 
-/* describe('getUser', () => {
+describe('initialized the INPUT', () => {
     beforeEach(() => {
-        fetch.resetMocks();
+        USERINPUT.resetMocks();
     });
 
-    it('get User', async () => {
-        fetch.mockResponseOnce(
-            JSON.stringify({
-                id: 1,
-                login: 'Luiz Araujo',
-                name: 'luialbeto',
-                url: 'https://api.github.com/users/luialbeto',
-            }),
-            { status: 200 }
-        );
-        const user = await getUserData('luialbeto');
-        expect(user).toEqual({
-            id: 1,
-            login: 'luialbeto',
-            name: 'Luiz Araujo',
-            url: 'https://api.github.com/users/luialbeto',
-        });
+    it('The input must show the questions', async () => {
+        const data = await getUserInput();
+        expect(data).toBe('question: string');
     });
 
-    it('not found', async () => {
-        fetch.mockResponseOnce(
-            JSON.stringify({
-                message: 'Not Found',
-            }),
-            { status: 404 }
-        );
-
-        const user = await getUserData('not-a-user');
-        expect(user).toEqual({
-            message: 'User not found',
-        });
-    });
-})
-
-describe('getRepos', () => {
-    beforeEach(() => {
-        fetch.resetMocks();
-    });
-
-    it('get repos', async () => {
-        fetch.mockResponseOnce(
-            JSON.stringify([
-                {
-                    id: 1,
-                    name: 'repo',
-                    description: 'This is repo',
-                },
-            ]),
-            { status: 200 }
-        );
-        const repos = await getProgLanguagesData('luialbeto', 1);
-        expect(repos).toEqual([
-            {
-                id: 1,
-                name: 'repo',
-                description: 'This is repo',
-            },
-
-        ]);
-    });
-
-});
- */
-
-jest.mock('../cliente');
-
-test('findAll', async () => {
-
-    const result = await getUserData.findAll(1);
-    console.log(result);
-    expect(result.length).toEqual(1);
+    /*  it('the fetch fails with an error', async () => {
+         expect.assertions(0);
+         try {
+             await getUserData();
+         } catch (e) {
+             expect(e).toMatch('Request failed with error: Request failed with status code 404');
+         }
+     });
+ 
+     it('Display all users on the database', async () => {
+         const data = await displayAllUsersInDb();
+         expect(data).toBe('User luialbeto added to db.');
+     });
+ 
+     it('the fetch fails with an error', async () => {
+         expect.assertions(0);
+         try {
+             await displayAllUsersInDb();
+         } catch (e) {
+             expect(e).toMatch('db disconnected');
+         }
+     });
+ 
+     it('Display all users by location', async () => {
+         const data = await displayUsersByLocation();
+         expect(data).toBe('User luialbeto added to db.');
+     });
+ 
+     it('the fetch fails with an error', async () => {
+         expect.assertions(0);
+         try {
+             await displayUsersByLocation();
+         } catch (e) {
+             expect(e).toMatch('db disconnected');
+         }
+     });
+ 
+     it('Display all users by programming language', async () => {
+         const data = await displayUsersByProgLang();
+         expect(data).toBe('User luialbeto added to db.');
+     });
+ 
+     it('db disconnected', async () => {
+         expect.assertions(0);
+         try {
+             await displayUsersByProgLang();
+         } catch (e) {
+             expect(e).toMatch('db disconnected');
+         }
+     }); */
 
 })

@@ -17,5 +17,3 @@ test('the data is', () => {
 
     expect(db).toBeTruthy();
 });
-
-console.log(db)
