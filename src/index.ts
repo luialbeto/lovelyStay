@@ -101,7 +101,7 @@ async function main() {
 
     // Receive github access_token from user
     const ACCESS_TOKEN = await getUserInput(
-        "\nEnter your GitHub API Access token(e.g. '12345678'):\n"
+        "\nEnter your GitHub API Access token(generate it on GitHub):\n"
     );
 
     // Create Menu cicle

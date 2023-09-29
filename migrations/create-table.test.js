@@ -1,9 +1,8 @@
-import { describe, expect } from '@jest/globals';
-import { createTable } from './create-table.ts';
+import { test } from '@jest/globals';
+import { createTable } from "./create-table";
 
-describe('createTable module', () => {
-    const data = createTable();
-    expect(data).toMatch(
-        _createTable
-    )
-})
+test('the data is', () => {
+    return createTable().then(data => {
+        expect(data).toBe(undefined);
+    });
+});
