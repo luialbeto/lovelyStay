@@ -12,7 +12,7 @@ const RL = readline.createInterface({
 });
 
 // Run menu
-async function optionsMenu() {
+export async function optionsMenu() {
 
     const USERINPUT = await getUserInput(
         "\nEnter the number corresponding a function and press \"Enter\"\n" +
@@ -26,7 +26,7 @@ async function optionsMenu() {
 }
 
 // Resolve user input
-async function getUserInput(question: string): Promise<string> {
+export async function getUserInput(question: string): Promise<string> {
     return new Promise((resolve) => {
         RL.question(question, (answer) => {
             resolve(answer);
@@ -56,7 +56,7 @@ export function getUserData(userName: string, ACCESS_TOKEN: string): Promise<Str
 }
 
 // Fetch programming languages from github repositories
-async function getProgLanguagesData(userName: string, ACCESS_TOKEN: string) {
+export async function getProgLanguagesData(userName: string, ACCESS_TOKEN: string) {
 
     // Construct the API endpoint URL
     const URL = `https://api.github.com/users/${userName}/repos`;
@@ -85,7 +85,7 @@ async function getProgLanguagesData(userName: string, ACCESS_TOKEN: string) {
         });
 }
 
-async function main() {
+export async function main() {
 
     // Create Variables
     let userInput
