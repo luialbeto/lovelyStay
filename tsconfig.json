@@ -6,7 +6,6 @@
         "esModuleInterop": true,
         "types": [
             "dotenv",
-            "module"
         ]
     },
     "include": [
